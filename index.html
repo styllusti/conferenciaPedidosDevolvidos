@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             text-align: center; /* Centraliza o conteúdo */
-            background: linear-gradient(to bottom right, #EEE, #676ab1);
+            background: linear-gradient(to bottom right, #EEE, #17a2b8);
 
         }
         h1 {
@@ -74,7 +74,7 @@
 </head>
 <body onload="setDataAtual()">
     <img class="logo" src="https://raw.githubusercontent.com/styllusti/conferencia/main/logo.png" alt="logo Styllus"/>
-    <h1>Conferência de Pedidos</h1> 
+    <h1>Conferência de Pedidos Devolvidos</h1> 
      <div class="dropdown list">
         <select class="dropdown-toggle btn btn-secondary" id="select-cidade" onchange="habilitarCampos()">
             <option value="">Selecione região</option>
@@ -121,7 +121,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     <script>
       let abaAtual = ''; // Define a aba padrão ao iniciar a página
-const SHEET_ID = '1xJR50ekmwsZ1F2aCGqujaPvCZsW-iquWuyVPGyIg01o';
+const SHEET_ID = '1Q3W42ZZDS_0hu0xOgvPbZTt_aZnDN4lk8nFTeKxvpiQ';
 const API_KEY = 'AIzaSyAEYoX7AH_0ZjCU7utv8JND73qAOdLSG3Q';
 let RANGE = ''; // Ajuste o range conforme necessário
 let itemsList = [];
@@ -246,10 +246,10 @@ function gerarCSV() {
 function enviarArquivoTelegram(csvContent) {
     const formData = new FormData();
     const blob = new Blob([csvContent], { type: 'text/csv' });
-    formData.append('chat_id', '-4200936402'); // Substitua pelo ID do chat desejado
+    formData.append('chat_id', '-1002150505138'); // Substitua pelo ID do chat desejado
     formData.append('document', blob, 'itens_verificados.csv');
 
-    fetch(`https://api.telegram.org/bot7272225151:AAFyfJNQOfHt-1YCo0HH8kKwrFpwBLyn9kk/sendDocument`, {
+    fetch(`https://api.telegram.org/bot6817295152:AAHcj6ywagCTX3susM3XwKMpb6LLxIgAm8o/sendDocument`, {
         method: 'POST',
         body: formData
     })
@@ -280,13 +280,13 @@ function enviarMensagemTelegram() {
     const aba = abaAtual;
     const status = "Sucesso";
     let mensagem = `Nome: ${nome}\nData: ${data}\nAba: ${aba}\nPedidos Encontrados: ${pedidosEncontrados}\nPedidos não encontrados: ${pedidosNaoEncontrados}\nStatus: ${status}`;
-    fetch(`https://api.telegram.org/bot7272225151:AAFyfJNQOfHt-1YCo0HH8kKwrFpwBLyn9kk/sendMessage`, {
+    fetch(`https://api.telegram.org/bot6817295152:AAHcj6ywagCTX3susM3XwKMpb6LLxIgAm8o/sendMessage`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            chat_id: '-4200936402',
+            chat_id: '-1002150505138',
             text: mensagem
         })
     })
